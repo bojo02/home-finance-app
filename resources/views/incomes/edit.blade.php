@@ -3,7 +3,7 @@
         <form  style="float:right;" action="{{route('income.delete', ['income' => $income->id])}}" method="POST">
             @CSRF
             @method('delete')
-            <button type="submit" class="btn btn-danger">Изтрий</button>
+            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Изтрий</button>
         </form>
         <h1>Редактирай Приход</h1>
         <form action="{{route('income.update', ['income' => $income->id])}}" method="POST">
@@ -45,7 +45,7 @@
                
               </select>
               
-              <button class="btn btn-primary" type="submit">Редактирай</button>
+              <button class="btn btn-primary" type="submit"><i class="fa-solid fa-pen"></i> Редактирай</button>
         </form>
     </div>
 </x-layout>

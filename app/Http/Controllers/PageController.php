@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
-    public function dashboard(){
+    public function dashboard(Request $request){
         $months = [
             'january' => 1,
             'february' => 2,
@@ -27,6 +27,12 @@ class PageController extends Controller
         ];
 
         $year = date('Y');
+
+        if(isset($request->year)){
+            $year = $request->year;
+        }
+
+        
                     
 
         $incomeCategories = IncomeCategory::get();

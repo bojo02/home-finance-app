@@ -23,6 +23,11 @@ class CostController extends Controller
     }
 
     public function categoryDelete(CostCategory $costCategory){
+
+        foreach($costCategory->allCosts as $cost){
+            $cost->delete();
+        }
+
         $costCategory->delete();
 
         return redirect(route('cost-categories'))->with('success','Категорията беше изтрита успешно!');

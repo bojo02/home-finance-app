@@ -5,7 +5,7 @@
             <form  style="float:right;" action="{{route('income-category.delete', ['incomeCategory' => $category->id])}}" method="POST">
                 @CSRF
                 @method('delete')
-                <button type="submit" class="btn btn-danger">Изтрий</button>
+                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Изтрий</button>
             </form>
             <h1 style="float:left;" >Редактиране на категория: {{$category->name}}</h1>
         </div>
@@ -22,7 +22,7 @@
                 </div>
                 @enderror
               </div>
-              <button class="btn btn-primary" type="submit">Обнови</button>
+              <button class="btn btn-primary" type="submit"><i class="fa-solid fa-pen"></i> Обнови</button>
         </form>
     </div>
 </x-layout>

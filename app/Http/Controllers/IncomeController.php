@@ -23,6 +23,10 @@ class IncomeController extends Controller
     }
 
     public function categoryDelete(IncomeCategory $incomeCategory){
+        foreach($incomeCategory->allIncomes as $income){
+            $income->delete();
+        }
+
         $incomeCategory->delete();
 
         return redirect(route('income-categories'))->with('success','Категорията беше изтрита успешно!');

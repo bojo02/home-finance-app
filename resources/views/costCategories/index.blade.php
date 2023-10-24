@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container mt-5">
         <div class="clear">
-            <a style="float:right;" href="{{route('cost-category.create')}}" class="btn btn-success">Добави Категория</a>
+            <a style="float:right;" href="{{route('cost-category.create')}}" class="btn btn-success"><i class="fa-solid fa-plus"></i> Добави Категория</a>
             <h1 style="float:left;" >Категории Разходи</h1>
         </div>
         <hr>

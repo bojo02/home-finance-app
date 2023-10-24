@@ -17,6 +17,9 @@ class IncomeCategory extends Model
         return $this->hasMany(Income::class,'','id')->whereYear('created_at', '=', $year)
         ->whereMonth('created_at', '=', $month)
         ->get();
+    }
 
+    public function allIncomes(){
+        return $this->hasMany(Income::class);
     }
 }

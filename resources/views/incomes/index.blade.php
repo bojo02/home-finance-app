@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container mt-5">
         <div class="clear">
-            <a style="float:right;" href="{{route('income.create')}}" class="btn btn-success">Добави Приход</a>
+            <a style="float:right;" href="{{route('income.create')}}" class="btn btn-success"><i class="fa-solid fa-plus"></i> Добави Приход</a>
             <h1 style="float:left;" >Всички Приходи</h1>
         </div>
         <hr>

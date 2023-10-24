@@ -8,13 +8,18 @@
     <div class="container mt-5">
         
         <div class="mb-3 mt-3">
-            <input type="number" min="2015" max="2099" step="1" value="{{date("Y")}}" />
+          <form action="{{route('dashboard')}}" method="GET">
+            <input type="number" name="year" step="1" value="{{$year}}" />
+
+            <button class="btn btn-success"><i class="fa-solid fa-arrow-up-right-from-square"></i> Отвори</button>
+          </form>
+           
         </div>
 
         <table class="table">
             <thead>
               <tr>
-                <th class="table-dark" scope="col">{{date("Y")}}</th>
+                <th class="table-dark" scope="col">{{$year}}</th>
                 <th class="table-dark" scope="col">Януари</th>
                 <th class="table-dark" scope="col">Февруари</th>
                 <th class="table-dark" scope="col">Март</th>
@@ -41,7 +46,7 @@
                    @foreach($category->costs(date($month), $year) as $income)
                       @php $tempValue = $tempValue + $income->amount; @endphp
                     @endforeach
-                    <td>{{$tempValue}}</td>
+                    <td>{{$tempValue}}лв</td>
                   @endforeach
               </tr>
             @endforeach
@@ -56,10 +61,32 @@
                      @foreach($category->incomes(date($month), $year) as $income)
                         @php $tempValue = $tempValue + $income->amount; @endphp
                       @endforeach
-                      <td>{{$tempValue}}</td>
+                      <td>{{$tempValue}}лв</td>
                     @endforeach
                 </tr>
             @endforeach
+
+            <tr class="table-warning">
+              <th scope="row">Общо Останали</th>
+                @foreach ($months as $month)
+                  @php 
+                  $currentMonth = 0;
+                  @endphp
+                  @foreach($incomeCategories as $category)
+                    @foreach($category->incomes(date($month), $year) as $income)
+                        @php $currentMonth = $currentMonth + $income->amount; @endphp
+                    @endforeach
+                  @endforeach
+
+                  @foreach($costCategories as $category)
+                    @foreach($category->costs(date($month), $year) as $cost)
+                        @php $currentMonth = $currentMonth - $cost->amount; @endphp
+                    @endforeach
+                  @endforeach
+                 
+                  <td>{{$currentMonth}}лв</td>
+                @endforeach
+            </tr>
               
             </tbody>
           </table>

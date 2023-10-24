@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CostCategory extends Model
 {
@@ -18,5 +19,10 @@ class CostCategory extends Model
         ->whereMonth('created_at', '=', $month)
         ->get();
 
+    }
+
+    public function allCosts()
+    {
+        return $this->hasMany(Cost::class);
     }
 }
