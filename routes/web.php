@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
@@ -51,3 +52,24 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/income/update/{income:id}', [IncomeController::class, 'update'])->name('income.update');
     Route::delete('/income/delete/{income:id}', [IncomeController::class, 'delete'])->name('income.delete');
 });
+
+//COSTS CATEGORIES ROUTES
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/cost-categories/index', [CostController::class, 'indexCategories'])->name('cost-categories');
+    Route::get('/cost-category/create', [CostController::class, 'categoryCreate'])->name('cost-category.create');
+    Route::post('/cost-category/store', [CostController::class, 'categoryStore'])->name('cost-category.store');
+    Route::get('/cost-category/edit/{costCategory:id}', [CostController::class, 'editCategory'])->name('cost-category.edit');
+    Route::put('/cost-category/update/{costCategory:id}', [CostController::class, 'categoryUpdate'])->name('cost-category.update');
+    Route::delete('/cost-category/delete/{costCategory:id}', [CostController::class, 'categoryDelete'])->name('cost-category.delete');
+});
+
+//COSTS ROUTES
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/costs/index', [CostController::class, 'index'])->name('costs');
+    Route::get('/cost/create', [CostController::class, 'create'])->name('cost.create');
+    Route::post('/cost/store', [CostController::class, 'store'])->name('cost.store');
+    Route::get('/cost/edit/{cost:id}', [CostController::class, 'edit'])->name('cost.edit');
+    Route::put('/cost/update/{cost:id}', [CostController::class, 'update'])->name('cost.update');
+    Route::delete('/cost/delete/{cost:id}', [CostController::class, 'delete'])->name('cost.delete');
+});
+

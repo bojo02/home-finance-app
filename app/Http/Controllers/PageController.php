@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DateTime;
 use Illuminate\Http\Request;
 use App\Models\IncomeCategory;
+use App\Models\CostCategory;
 use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
@@ -30,6 +31,8 @@ class PageController extends Controller
 
         $incomeCategories = IncomeCategory::get();
 
-        return view("home", compact("incomeCategories", 'months', 'year'));
+        $costCategories = CostCategory::get();
+
+        return view("home", compact("incomeCategories", "costCategories", 'months', 'year'));
     }
 }

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cost extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['amount', 'note', 'cost_category_id'];
+
+    public function category(){
+        return $this->belongsTo(IncomeCategory::class, 'income_category_id');
+    }
 }

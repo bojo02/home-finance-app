@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('costs', function (Blueprint $table) {
             $table->id();
             $table->integer('amount');
-            $table->integer('note');
+            $table->string('note');
             $table->integer('cost_category_id');
             $table->timestamps();
         });

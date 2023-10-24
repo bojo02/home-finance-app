@@ -19,24 +19,22 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 @auth
-              <li class="nav-item">
+              <li class="nav-item m-2">
                 <a class="nav-link" aria-current="page" href="{{route('dashboard')}}">Табло</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Добави Приход</a>
+              <li class="nav-item m-2">
+                <a class="btn btn-primary" href="{{route('incomes')}}">Приходи</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Добави Разход</a>
+              <li class="nav-item m-2">
+                <a class="nav-link" href="{{route('costs')}}">Разходи</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item m-2">
                 <a class="nav-link" href="{{route('income-categories')}}">Категории Приходи</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Категории Разходи</a>
+              <li class="nav-item m-2">
+                <a class="nav-link" href="{{route('cost-categories')}}">Категории Разходи</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('incomes')}}">Всички приходи</a>
-              </li>
+             
               @endauth
             </ul>
             @if(auth()->check())

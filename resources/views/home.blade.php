@@ -31,14 +31,14 @@
             </thead>
             <tbody>
 
-              @foreach($incomeCategories as $category)
+              @foreach($costCategories as $category)
               <tr class="table-danger">
                 <th scope="row">{{$category->name}}</th>
                   @foreach ($months as $month)
                     @php 
                     $tempValue = 0;
                     @endphp
-                   @foreach($category->incomes(date($month), $year) as $income)
+                   @foreach($category->costs(date($month), $year) as $income)
                       @php $tempValue = $tempValue + $income->amount; @endphp
                     @endforeach
                     <td>{{$tempValue}}</td>
