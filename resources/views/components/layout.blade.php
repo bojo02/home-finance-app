@@ -34,6 +34,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Категории Разходи</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('incomes')}}">Всички приходи</a>
+              </li>
               @endauth
             </ul>
             @if(auth()->check())
