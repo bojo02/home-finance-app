@@ -30,43 +30,42 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">Кола</th>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
-                <td>100лв</td>
+
+              @foreach($incomeCategories as $category)
+              <tr class="table-danger">
+                <th scope="row">{{$category->name}}</th>
+                  @foreach ($months as $month)
+                    @php 
+                    $tempValue = 0;
+                    @endphp
+                   @foreach($category->incomes(date($month), $year) as $income)
+                      @php $tempValue = $tempValue + $income->amount; @endphp
+                    @endforeach
+                    <td>{{$tempValue}}</td>
+                  @endforeach
               </tr>
-              <tr>
-                <th scope="row">Спестени</th>
-                <td >200лв</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+            @endforeach
+
+              @foreach($incomeCategories as $category)
+                <tr class="table-success">
+                  <th scope="row">{{$category->name}}</th>
+                    @foreach ($months as $month)
+                      @php 
+                      $tempValue = 0;
+                      @endphp
+                     @foreach($category->incomes(date($month), $year) as $income)
+                        @php $tempValue = $tempValue + $income->amount; @endphp
+                      @endforeach
+                      <td>{{$tempValue}}</td>
+                    @endforeach
+                </tr>
+            @endforeach
+              
             </tbody>
           </table>
     
-          <div class="alert alert-success" role="alert">
-            Общо заделени: 200лв
-          </div>
-          <div class="alert alert-danger" role="alert">
-            Общо изхарчени: 400лв
-          </div>
+         
           {{date("M, Y", strtotime("+1 month"))}}
-          
 
           <script>
           $(function() {

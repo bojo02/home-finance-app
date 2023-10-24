@@ -12,4 +12,11 @@ class IncomeCategory extends Model
     protected $table = "income_categories";
 
     protected $fillable = ['name'];
+
+    public function incomes($month, $year){
+        return $this->hasMany(Income::class,'','id')->whereYear('created_at', '=', $year)
+        ->whereMonth('created_at', '=', $month)
+        ->get();
+
+    }
 }
