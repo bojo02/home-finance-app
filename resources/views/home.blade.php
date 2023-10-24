@@ -46,7 +46,11 @@
                    @foreach($category->costs(date($month), $year) as $income)
                       @php $tempValue = $tempValue + $income->amount; @endphp
                     @endforeach
-                    <td>{{$tempValue}}лв</td>
+                    @if($tempValue != 0)
+                      <td><a style="text-decoration: none; color:black;" href="{{route('costs.search', ['costCategory' => $category, 'month' => $month, 'year' => $year])}}">{{$tempValue}}лв</a></td>
+                      @else
+                      <td>{{$tempValue}}лв</td>
+                    @endif
                   @endforeach
               </tr>
             @endforeach
@@ -61,7 +65,11 @@
                      @foreach($category->incomes(date($month), $year) as $income)
                         @php $tempValue = $tempValue + $income->amount; @endphp
                       @endforeach
+                      @if($tempValue != 0)
+                      <td><a style="text-decoration: none; color:black;" href="{{route('incomes.search', ['incomeCategory' => $category, 'month' => $month, 'year' => $year])}}">{{$tempValue}}лв</a></td>
+                      @else
                       <td>{{$tempValue}}лв</td>
+                    @endif
                     @endforeach
                 </tr>
             @endforeach

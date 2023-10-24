@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function(){
 //INCOMES ROUTES
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/incomes/index', [IncomeController::class, 'index'])->name('incomes');
+    Route::get('/incomes/search/{incomeCategory:id}/{month}/{year}', [IncomeController::class, 'search'])->name('incomes.search');
     Route::get('/income/create', [IncomeController::class, 'create'])->name('income.create');
     Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
     Route::get('/income/edit/{income:id}', [IncomeController::class, 'edit'])->name('income.edit');
@@ -66,6 +67,7 @@ Route::group(['middleware' => 'auth'], function(){
 //COSTS ROUTES
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/costs/index', [CostController::class, 'index'])->name('costs');
+    Route::get('/costs/search/{costCategory:id}/{month}/{year}', [CostController::class, 'search'])->name('costs.search');
     Route::get('/cost/create', [CostController::class, 'create'])->name('cost.create');
     Route::post('/cost/store', [CostController::class, 'store'])->name('cost.store');
     Route::get('/cost/edit/{cost:id}', [CostController::class, 'edit'])->name('cost.edit');

@@ -66,6 +66,16 @@ class CostController extends Controller
         return view('costs.index', compact('costs'));
     }
 
+    public function search(CostCategory $costCategory, $month, $year){
+        $costs = $costCategory->costs($month, $year)->paginate(10);
+
+        if(!count($costs) > 0){
+            return back()->with('wrong', 'Не бяха открити разходи...');
+        }
+
+        return view('costs.search', compact('costs', 'costCategory'));
+    }
+
     public function create(){
         $categories = CostCategory::get();
 

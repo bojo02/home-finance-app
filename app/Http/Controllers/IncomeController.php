@@ -114,4 +114,14 @@ class IncomeController extends Controller
 
         return redirect(route('incomes'))->with('success', 'Прихода беше изтрит успешно!');
     }
+
+    public function search(IncomeCategory $incomeCategory, $month, $year){
+        $incomes = $incomeCategory->incomes($month, $year)->paginate(10);
+
+        if(!count($incomes) > 0){
+            return back()->with('wrong', 'Не бяха открити приходи...');
+        }
+
+        return view('incomes.search', compact('incomes', 'incomeCategory'));
+    }
 }
