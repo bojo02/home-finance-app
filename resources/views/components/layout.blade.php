@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('./css/style.css')}}">
+    <style>
+
+
+      #clock {
+          font-size: 20px;
+          padding: 5px;
+          
+          text-align: center;
+          border: 2px solid black;
+          border-radius: 5px;
+      }
+
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
@@ -38,6 +51,7 @@
               @endauth
             </ul>
             @if(auth()->check())
+            <div id="clock">8:10:45</div>
                 <a href="{{route('logout')}}" type="button" class="btn btn-danger m-2">Излез</a>
             @else
                 <a href="{{route('login')}}" type="button" class="btn btn-primary m-2">Вход</a>
@@ -65,6 +79,49 @@
 
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<script>
+  // Calling showTime function at every second
+setInterval(showTime, 1000);
 
+// Defining showTime funcion
+function showTime() {
+	// Getting current time and date
+	let time = new Date();
+	let hour = time.getHours();
+	let min = time.getMinutes();
+	let sec = time.getSeconds();
+	am_pm = "AM";
+
+	// Setting time for 12 Hrs format
+	if (hour >= 12) {
+		if (hour > 12) hour -= 12;
+		am_pm = "PM";
+	} else if (hour == 0) {
+		hr = 12;
+		am_pm = "AM";
+	}
+
+	hour =
+		hour < 10 ? "0" + hour : hour;
+	min = min < 10 ? "0" + min : min;
+	sec = sec < 10 ? "0" + sec : sec;
+
+	let currentTime =
+		hour +
+		":" +
+		min +
+		":" +
+		sec +
+		am_pm;
+
+	// Displaying the time
+	document.getElementById(
+		"clock"
+	).innerHTML = currentTime;
+}
+
+showTime();
+
+</script>
 </body>
 </html>

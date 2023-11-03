@@ -47,7 +47,7 @@
                       @php $tempValue = $tempValue + $income->amount; @endphp
                     @endforeach
                     @if($tempValue != 0)
-                      <td><a style="text-decoration: none; color:black;" href="{{route('costs.search', ['costCategory' => $category, 'month' => $month, 'year' => $year])}}">{{$tempValue}}лв</a></td>
+                      <td><a style="text-decoration: underline; color:black;" href="{{route('costs.search', ['costCategory' => $category, 'month' => $month, 'year' => $year])}}">{{$tempValue}}лв</a></td>
                       @else
                       <td>{{$tempValue}}лв</td>
                     @endif
@@ -66,7 +66,7 @@
                         @php $tempValue = $tempValue + $income->amount; @endphp
                       @endforeach
                       @if($tempValue != 0)
-                      <td><a style="text-decoration: none; color:black;" href="{{route('incomes.search', ['incomeCategory' => $category, 'month' => $month, 'year' => $year])}}">{{$tempValue}}лв</a></td>
+                      <td><a style="text-decoration: underline; color:black;" href="{{route('incomes.search', ['incomeCategory' => $category, 'month' => $month, 'year' => $year])}}">{{$tempValue}}лв</a></td>
                       @else
                       <td>{{$tempValue}}лв</td>
                     @endif
@@ -100,7 +100,7 @@
           </table>
     
          
-          {{date("M, Y", strtotime("+1 month"))}}
+          Днес сме: {{date("d, M, Y", strtotime("+0 month"))}}
 
           <script>
           $(function() {
