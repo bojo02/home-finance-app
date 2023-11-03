@@ -38,6 +38,9 @@ class UserController extends Controller
     }
 
     public function makeRegistration(Request $request){
+
+        return redirect()->back()->with('wrong', 'The registration is currently disabled...');
+
         $fields = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
